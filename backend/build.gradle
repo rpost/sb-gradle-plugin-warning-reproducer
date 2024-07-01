@@ -1,0 +1,130 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.1' apply false
+}
+
+allprojects {
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom 'org.springframework.boot:spring-boot-dependencies:3.3.1'
+            mavenBom 'org.apache.cxf:cxf-bom:latest.release'
+        }
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+        testImplementation 'org.assertj:assertj-core'
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    }
+
+    test {
+        useJUnitPlatform()
+
+    }
+
+}
+
+apply plugin: 'org.springframework.boot'
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:3.3.1'
+    }
+}
+
+ext['hibernate.version'] = '6.4.8.Final'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.retry:spring-retry'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'org.springframework.session:spring-session-jdbc'
+    implementation 'com.cosium.spring.data:spring-data-jpa-entity-graph:latest.release'
+    implementation 'com.github.kagkarlsson:db-scheduler-spring-boot-starter:latest.release'
+    implementation 'org.webjars:webjars-locator-core'
+    implementation 'org.webjars:bootstrap:latest.release'
+    implementation 'org.webjars.npm:bootstrap-icons:latest.release'
+    implementation 'org.webjars.npm:prismjs:latest.release'
+    implementation 'org.webjars.npm:htmx.org:latest.release'
+
+    implementation 'org.keycloak:keycloak-admin-client:latest.release'
+    testImplementation "org.keycloak:keycloak-core:latest.release"
+
+    implementation 'jakarta.xml.ws:jakarta.xml.ws-api:latest.release'
+
+    implementation 'io.swagger.core.v3:swagger-annotations:latest.release'
+    implementation 'io.swagger:swagger-annotations:latest.release'
+    implementation 'org.springdoc:springdoc-openapi-starter-common:latest.release'
+    implementation 'org.jetbrains:annotations:latest.release'
+    implementation 'net.datafaker:datafaker:latest.release'
+    implementation 'com.google.guava:guava:latest.release'
+    implementation 'org.apache.poi:poi-ooxml:latest.release'
+    implementation 'commons-validator:commons-validator:latest.release'
+    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
+    implementation 'software.amazon.awssdk:s3:latest.release'
+    implementation 'software.amazon.awssdk:secretsmanager:latest.release'
+    implementation 'org.apache.cxf:cxf-rt-rs-client'
+    implementation 'org.zalando:logbook-spring:latest.release'
+    implementation 'org.bouncycastle:bcpkix-jdk18on:latest.release'
+
+    implementation "gg.jte:jte-spring-boot-starter-3:3.1.12"
+    implementation "gg.jte:jte:3.1.12"
+
+
+    implementation 'org.apache.pdfbox:pdfbox:latest.release'
+    implementation 'org.mapstruct:mapstruct:latest.release'
+
+    implementation 'io.micrometer:micrometer-registry-cloudwatch2:latest.release'
+
+    implementation 'net.javacrumbs.shedlock:shedlock-spring:latest.release'
+    implementation 'net.javacrumbs.shedlock:shedlock-provider-jdbc-template:latest.release'
+
+    implementation 'com.google.code.gson:gson:2.9.1'
+
+    annotationProcessor "org.hibernate.orm:hibernate-jpamodelgen"
+    annotationProcessor 'org.mapstruct:mapstruct-processor:latest.release'
+
+    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'org.liquibase:liquibase-core'
+
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    compileOnly 'io.soabase.record-builder:record-builder-core:latest.release'
+    testCompileOnly 'io.soabase.record-builder:record-builder-core:latest.release'
+    annotationProcessor 'io.soabase.record-builder:record-builder-processor:latest.release'
+
+    testImplementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:latest.release'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'de.cronn:validation-file-assertions:latest.release'
+    testImplementation 'org.eclipse.jgit:org.eclipse.jgit:latest.release'
+    testImplementation 'de.cronn:test-utils:latest.release'
+    testImplementation 'com.google.guava:guava:latest.release'
+    testImplementation 'nl.jqno.equalsverifier:equalsverifier:latest.release'
+
+    testImplementation 'org.testcontainers:testcontainers'
+    testRuntimeOnly 'org.testcontainers:postgresql'
+
+    testRuntimeOnly 'org.apache.httpcomponents.client5:httpclient5'
+
+    testRuntimeOnly 'com.h2database:h2'
+    testImplementation "org.hibernate.orm:hibernate-ant"
+    testImplementation 'org.liquibase:liquibase-core'
+}
+

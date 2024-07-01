@@ -1,0 +1,5 @@
+out/
+
+src/main/generated/
+
+src/main/resources/git.properties
